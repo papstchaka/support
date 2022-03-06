@@ -36,6 +36,8 @@ class filesystem:
         for (dir_path, dir_names, filenames) in os.walk(path):
             files.extend(filenames)
             dirs.extend(dir_names)
+        dirs = sorted(dirs)
+        files = sorted(files)
         return files, dirs
 
     def get_number_of_files(self, path:str, with_subdirs:bool = True) -> (int, int):
