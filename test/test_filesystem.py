@@ -12,8 +12,8 @@ def test_getfiles() -> None:
     path = "./src"
     fs = filesystem()
     files, dirs = fs.get_files(path)
-    assert dirs == ["support"], "directories mismatch"
-    assert files == ["support.py", "__init__.py"], "files mismatch"
+    assert dirs == ["support", "support.egg-info"], "directories mismatch"
+    assert files == ['PKG-INFO', 'SOURCES.txt', '__init__.py', 'dependency_links.txt', 'support.py', 'top_level.txt'], "files mismatch"
     return
 
 def test_getnumberoffiles() -> None:
@@ -27,11 +27,11 @@ def test_getnumberoffiles() -> None:
     path = "./src"
     fs = filesystem()
     file_count, dir_count = fs.get_number_of_files(path)
-    assert dir_count == 1, "directory count mismatch"
-    assert file_count == 2, "file count mismatch"
+    assert dir_count == 2, "directory count mismatch"
+    assert file_count == 6, "file count mismatch"
     file_count, dir_count = fs.get_number_of_files(path, False)
     assert dir_count == 1, "directory count mismatch"
-    assert file_count == 1, "file count mismatch"
+    assert file_count == 2, "file count mismatch"
 
 def test_getsizeofobject() -> None:
     '''
@@ -41,9 +41,9 @@ def test_getsizeofobject() -> None:
     Returns:
         - None
     '''
-    path = "./src/support/"
+    path = "./src"
     fs = filesystem()
     _size = fs.get_size_of_object(path)
     assert _size.endswith("kiloByte"), "wrong unit"
     _size_val = float(_size.split(" ")[-2])
-    assert 1.5 <= _size_val <= 4.0, "wrong size"
+    assert 3.5 <= _size_val <= 6.0, "wrong size"
