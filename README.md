@@ -43,3 +43,30 @@ Python module providing some useful functionality that may be needed from time t
             - path: path to folder or file [String]
         - Returns:
             - size: size of object (in bytes) [String]
+
+    - `check_for_folder()`: checks if given folder exists. If not, it creates it
+
+        - Parameter:
+            - path: path to folder to check for [String]
+        - Returns:
+            - None
+
+-----
+
+- class `helper`: bunch of helper functions that don't belong to other classes
+
+    - `__init__()`: constructor of class
+
+        - Parameter: 
+            - None
+        - Initializes: 
+            - None
+        - Returns:
+            - None
+
+    - `get_func_params()`: helper-function to determine all parameters and their default values from given function
+
+        - Parameter: 
+            - function: function to check [Python.object]
+        - Returns:
+            - parameterlist: Dictionary of parameters and respective default value (if existing) [Dictionary(String: object)]
