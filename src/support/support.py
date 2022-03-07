@@ -98,3 +98,44 @@ class filesystem:
             pass
         else:
             os.mkdir(path)
+
+class helper:
+    '''
+    bunch of helper functions that don't belong to other classes
+    '''
+
+    def __init__(self) -> None:
+        '''
+        constructor of class
+        Parameter:
+            - None
+        Initializes:
+            - None
+        Returns:
+            - None
+        '''
+        pass
+            
+    def get_func_params(self, function:object) -> {str: object}: 
+        '''
+        helper-function to determine all parameters and their default values from given function
+        Parameter: 
+            - function: function to check [Python.object]
+        Returns:
+            - parameterlist: Dictionary of parameters and respective default value (if existing) [Dictionary(String: object)]
+        '''
+        try:
+            args, _, _, defaults, *_ = inspect.getfullargspec(function)
+        except:
+            print(f'{function} is an unsupported callable')
+            return {}
+        if "self" in args: args.remove("self")
+        if defaults is not None:
+            if len(defaults) < len(args):
+                parameterlist = dict(zip(args[ : -len(defaults)], [None for i in range( len(args) - len(defaults) )]))
+                parameterlist.update(dict(zip(args[-len(defaults) : ], defaults)))
+            else:
+                parameterlist = dict(zip(args, defaults))
+        else:
+            parameterlist = dict(zip(args, [None for i in range(len(args))]))
+        return parameterlist
