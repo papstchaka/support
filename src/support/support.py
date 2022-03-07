@@ -24,7 +24,7 @@ class filesystem:
 
     def get_files(self, path:str) -> ([str], [str]):
         '''
-        get all files and directories in given folder
+        get all files (with path name) and directories in given folder
         Parameter:
             - path: path to folder containing the files [String]
         Returns:    
@@ -34,7 +34,8 @@ class filesystem:
         '''
         files, dirs = [], []
         for (dir_path, dir_names, filenames) in os.walk(path):
-            files.extend(filenames)
+            for f in filenames:
+                files.append(os.path.join(dir_path, f))
             dirs.extend(dir_names)
         dirs = sorted(dirs)
         files = sorted(files)
@@ -68,15 +69,14 @@ class filesystem:
             - size: size of object (in bytes) [String]
         '''
         total_size = 0
-        for dirpath, dirnames, filenames in os.walk(path):
+        for dir_path, dirnames, filenames in os.walk(path):
             for f in filenames:
-                fp = os.path.join(dirpath, f)
-                # skip if it is symbolic link
-                if not os.path.islink(fp):
-                    try:
-                        total_size += os.path.getsize(fp)
-                    except:
-                        pass
+                fp = os.path.join(dir_path, f)
+                ## sometimes the os doesn't let us open a file
+                try:
+                    total_size += os.path.getsize(fp)
+                except:
+                    pass
         ## convert from bits to byte
         _size = total_size / 1.07374
         for name, factor in self.conversion_table.items():
