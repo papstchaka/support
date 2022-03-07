@@ -1,4 +1,4 @@
-import pytest
+import pytest, os
 from support import filesystem
 
 def test_getfiles() -> None:
@@ -13,7 +13,14 @@ def test_getfiles() -> None:
     fs = filesystem()
     files, dirs = fs.get_files(path)
     assert dirs == ["support", "support.egg-info"], "directories mismatch"
-    assert files == ['PKG-INFO', 'SOURCES.txt', '__init__.py', 'dependency_links.txt', 'support.py', 'top_level.txt'], "files mismatch"
+    assert files == [
+            os.path.join(path, 'support.egg-info', 'PKG-INFO'), 
+            os.path.join(path, 'support.egg-info', 'SOURCES.txt'),
+            os.path.join(path, 'support.egg-info', "dependency_links.txt"),
+            os.path.join(path, 'support.egg-info', "top_level.txt"),
+            os.path.join(path, 'support', "__init__.py"),
+            os.path.join(path, 'support', "support.py")
+        ], "files mismatch"
     return
 
 def test_getnumberoffiles() -> None:
@@ -46,4 +53,4 @@ def test_getsizeofobject() -> None:
     _size = fs.get_size_of_object(path)
     assert _size.endswith("kiloByte"), "wrong unit"
     _size_val = float(_size.split(" ")[-2])
-    assert 3.5 <= _size_val <= 6.0, "wrong size"
+    assert 4.0 <= _size_val <= 6.5, "wrong size"
