@@ -1,4 +1,4 @@
-import os
+import os, inspect
 
 class filesystem:
     '''
@@ -85,3 +85,16 @@ class filesystem:
             else:
                 size = f'size of {path} is {round(_size / factor, 1)} {name}'
         return size
+        
+    def check_for_folder(self, path:str) -> None:
+        '''
+        checks if given folder exists. If not, it creates it
+        Parameter:
+            - path: path to folder to check for [String]
+        Returns:
+            - None
+        ''' 
+        if os.path.isdir(path):
+            pass
+        else:
+            os.mkdir(path)
