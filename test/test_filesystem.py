@@ -53,4 +53,21 @@ def test_getsizeofobject() -> None:
     _size = fs.get_size_of_object(path)
     assert _size.endswith("kiloByte"), "wrong unit"
     _size_val = float(_size.split(" ")[-2])
-    assert 4.0 <= _size_val <= 6.5, "wrong size"
+    assert 6.0 <= _size_val <= 8.0, "wrong size"
+
+def test_checkforfolder() -> None:
+    '''
+    tests if check_for_folder() correctly creates new folder that wasn't there before
+    Parameter:
+        - None
+    Returns:
+        - None
+    '''
+    path = "./test"
+    folder_name = "test"
+    fs = filesystem()
+    assert folder_name not in os.listdir(path), "folder test already exists"
+    fs.check_for_folder(os.path.join(path, folder_name))
+    assert folder_name in os.listdir(path), "creating folder test failed"
+    os.rmdir(os.path.join(path, folder_name))
+    assert folder_name not in os.listdir(path), "folder test still exists"
