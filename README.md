@@ -18,7 +18,7 @@ Python module providing some useful functionality that may be needed from time t
         - Returns:
             - None
 
-    - `get_files()`: get all files and directories in given folder
+    - `get_files()`: get all files (with path name) and directories in given folder
 
         - Parameter:
             - path: path to folder containing the files [String]
