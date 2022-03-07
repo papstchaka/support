@@ -10,7 +10,7 @@ def test_getfuncparams() -> None:
         - None 
     '''
     h = helper()
-    parameterlist = h.get_func_params(os.path.join)
-    assert parameterlist == {"path": None}, "wrong parameters for os.path.join"
+    parameterlist = h.get_func_params(os.listdir)
+    assert parameterlist == {"path": None}, "wrong parameters for os.listdir"
     parameterlist = h.get_func_params(os.path)
     assert parameterlist == {}, "wrong parameters for os.path. Should be empty"
