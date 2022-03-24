@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-python@master
       with:
         python-version: 3.7
+    - name: Build package and install it
+      run: |
+        python -m build
+        python -m pip install ./dist/*.whl
     - name: Generate coverage report
       run: |
         pip install pytest
