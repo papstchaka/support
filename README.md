@@ -1,4 +1,23 @@
 # support
+
+<p align="center">
+    <p align="center">
+        <a href="https://github.com/papstchaka/support/actions">
+          <img alt="Build Python Package" src="https://github.com/papstchaka/support/actions/workflows/python-package.yml/badge.svg"/>
+        </a>
+        <a href="https://github.com/papstchaka/support/issues">
+          <img alt="Issues" src="https://img.shields.io/github/issues/papstchaka/support?color=0088ff"/>
+        </a>
+        <a href="https://github.com/papstchaka/support/pulls">
+          <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/papstchaka/support?color=0088ff"/>
+        </a>
+    </p>
+</p>
+
+---
+
+<br></br>
+
 Python module providing some useful functionality that may be needed from time to time
 
 <br></br>
