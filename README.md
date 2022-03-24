@@ -9,7 +9,7 @@
           <img alt="Code Coverage" src="https://github.com/papstchaka/support/actions/workflows/codecov.yml/badge.svg"/>
         </a>
         <a href="https://codecov.io/gh/papstchaka/support/">
-          <img src="https://codecov.io/gh/papstchaka/support/branch/master/graph.badge.svg"/>
+          <img src="https://codecov.io/gh/papstchaka/support/branch/master/graph/badge.svg"/>
         </a>
         <a href="https://github.com/papstchaka/support/issues">
           <img alt="Issues" src="https://img.shields.io/github/issues/papstchaka/support?color=0088ff"/>
