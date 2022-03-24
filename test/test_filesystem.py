@@ -53,7 +53,7 @@ def test_getsizeofobject() -> None:
     _size = fs.get_size_of_object(path)
     assert _size.endswith("kiloByte"), "wrong unit"
     _size_val = float(_size.split(" ")[-2])
-    assert 6.0 <= _size_val <= 8.0, "wrong size"
+    assert 2.0 <= _size_val <= 20.0, "wrong size"
 
 def test_checkforfolder() -> None:
     '''
