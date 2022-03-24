@@ -17,6 +17,7 @@ jobs:
         python-version: 3.7
     - name: Build package and install it
       run: |
+        python -m pip install --upgrade pip build
         python -m build
         python -m pip install ./dist/*.whl
     - name: Generate coverage report
